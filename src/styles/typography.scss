@@ -1,0 +1,32 @@
+html {
+  font-size: 10px;
+}
+body {
+  font-size: 1.6rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  line-height: 2;
+}
+body {
+  color: #333333;
+}
+
+//size helpers
+.xl {
+  font-size: var(--xl-sz);
+}
+.lg {
+  font-size: var(--lg-sz);
+}
+.md {
+  font-size: var(--md-sz);
+}
+.sm {
+  font-size: var(--sm-sz);
+}
+.xs {
+  font-size: var(--xs-sz);
+}
+.xxs {
+  font-size: var(--xxs-sz);
+}

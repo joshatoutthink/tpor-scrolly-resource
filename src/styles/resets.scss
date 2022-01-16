@@ -1,0 +1,41 @@
+html {
+  font-size: 62.5%;
+} /*10px*/
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  *,
+  *::after,
+  *::before {
+    box-sizing: inherit;
+    position: relative;
+  }
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: var(--base-sz);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+}

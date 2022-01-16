@@ -1,0 +1,36 @@
+header {
+  width: 100vw;
+  z-index: var(--layer-top);
+  text-align: center;
+}
+
+header h1 {
+  font-size: var(--xl-sz);
+  font-weight: 400;
+  color: var(--primary);
+}
+
+/*--------------------------
+|           STATES         |
+---------------------------*/
+
+[data-state="introduction"] header {
+  h1 {
+    color: var(--secondary);
+    font-size: var(--md-sz);
+  }
+}
+
+[data-state="panel"] header {
+  h1 {
+    color: var(--secondary);
+    font-size: var(--sm-sz);
+  }
+}
+
+[data-state="panel"] header {
+  h1 {
+    color: var(--primary);
+    font-size: var(--md-sz);
+  }
+}

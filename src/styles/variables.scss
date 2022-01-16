@@ -1,0 +1,70 @@
+:root {
+  // colors
+  --teal: #019ea7;
+  --yellow: #f6e200;
+  --teal50: #c4e0e0;
+  --gray50: #f8fafc;
+  --gray100: #f1f5f9;
+  --gray200: #e2e8f0;
+  --gray300: #cbd5e1;
+  --gray400: #94a3b8;
+  --gray500: #64748b;
+  --gray600: #475569;
+  --gray700: #334155;
+  --gray800: #1e293b;
+  --gray900: #0f172a;
+  --white: var(--gray50);
+  --black: var(--gray900);
+
+  --primary: var(--teal);
+  --secondary: var(--yellow);
+
+  //size
+  --base-sz: 1rem; //10px
+  --xl-sz: 5.653rem;
+  --lg-sz: 3.998rem;
+  --md-sz: 2.827rem;
+  --sm-sz: 1.999rem;
+  --xs-sz: 1.414rem;
+  --xxs-sz: 0.707rem;
+
+  //type
+  --line-height: 2em;
+
+  //veiwport
+  --full-height: calc(var(--vh, 1vh) * 100);
+
+  //shadows
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --shadow-none: 0 0 #0000;
+
+  //layers
+  --layer-bottom: -1;
+  --layer0: 0;
+  --layer1: 1;
+  --layer2: 2;
+  --layer3: 3;
+  --layer4: 4;
+  --layer5: 5;
+  --layer6: 6;
+  --layer7: 7;
+  --layer8: 8;
+  --layer9: 9;
+  --layer-top: 10;
+}
+@media (max-width: 762px) {
+  :root {
+    font-size: 7px;
+  }
+}
+
+//BGs
+@import "./bg-vars.scss";

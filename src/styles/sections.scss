@@ -1,0 +1,40 @@
+section {
+  height: var(--full-height);
+}
+
+/*----------------------------------
+ *        TITLE                     |
+ *----------------------------------*/
+
+#title-section {
+  background-color: var(--teal50);
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-block-start: calc(var(--xl-sz) - var(--line-height));
+  gap: var(--xl-sz);
+}
+
+#title-section * {
+  max-width: 70ch;
+  margin-inline: auto;
+}
+
+#title-section hr {
+  border: none;
+  margin-inline: auto;
+  background: var(--secondary);
+  height: var(--base-sz);
+  width: 200px;
+}
+
+#title-section p {
+  font-size: var(--sm-sz);
+}
+
+/*----------------------------------
+ *        INTRO                     |
+ *----------------------------------*/
