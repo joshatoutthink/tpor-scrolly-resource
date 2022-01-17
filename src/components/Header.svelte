@@ -50,7 +50,9 @@ header{
   text-align: center;
   position:sticky;
   top:0;
-  height:100vh;
+  height:calc(100vh - 200px);
+  pointer-events:none;
+  background:var(--teal50);
 }  
 
 .page-container{
