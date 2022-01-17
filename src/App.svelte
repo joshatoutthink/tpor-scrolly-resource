@@ -1,65 +1,59 @@
 <script>
-  import logo from './assets/svelte.png'
-  import Counter from './lib/Counter.svelte'
+  import Introduction from "./components/Feels.svelte"
+  import Header from "./components/Header.svelte"
+  import Footer from "./components/Footer.svelte"
+  import {scrollProgress} from "./lib/scrollProgress"
+
+  import {onMount} from "svelte"
+
+  let AppEl;
+  let scrolled = 0;
+  onMount(()=>{
+    scrollProgress(AppEl,{
+      onUpdate:({progress})=>{
+        scrolled = progress
+      }
+    })
+  }) 
+
+
 </script>
 
-<main>
-  <img src={logo} alt="Svelte Logo" />
-  <h1>Hello world!</h1>
 
-  <Counter />
+<div class="App" bind:this={AppEl} style={`--scrolled:${scrolled}`}>
+  <div class="scroll-progress-indicator"></div>
+  <Header 
+    --header-height="33vh"
+  />
 
-  <p>
-    Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
-    apps.
-  </p>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme">SvelteKit</a> for
-    the officially supported framework, also powered by Vite!
-  </p>
-</main>
+  <main>
+    <Introduction />
+  </main>
+  <Footer/>
+</div>
 
 <style>
-  :root {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
+.App{
+  min-height:100vh;
+}
+section{
+  min-height:100vh;
+  z-index:var(--layer0);
+  background:white;
+  
+}
 
-  main {
-    text-align: center;
-    padding: 1em;
-    margin: 0 auto;
-  }
+.scroll-progress-indicator{
+  width:100%;
+  position:fixed;
+  top:0;
+  height:10px;
+  background:var(--yellow);
+  transform:scaleX(var(--scrolled));
+  z-index:var(--layer-top);
+}
 
-  img {
-    height: 16rem;
-    width: 16rem;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 100;
-    line-height: 1.1;
-    margin: 2rem auto;
-    max-width: 14rem;
-  }
-
-  p {
-    max-width: 14rem;
-    margin: 1rem auto;
-    line-height: 1.35;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      max-width: none;
-    }
-
-    p {
-      max-width: none;
-    }
-  }
+section:last-child{
+  box-shadow:var(--shadow-xl);
+}
 </style>
