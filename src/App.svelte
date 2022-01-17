@@ -2,6 +2,7 @@
   import Feels from "./components/Feels.svelte"
   import BookPromotion from "./components/BookPromo.svelte"
   import Header from "./components/Header.svelte"
+  import Conclusion from "./components/Conclusion.svelte"
   import Footer from "./components/Footer.svelte"
   import {scrollProgress} from "./lib/scrollProgress"
 
@@ -29,7 +30,9 @@
 
   <main>
     <Feels />
+    <Conclusion/>
     <BookPromotion/>
+
   </main>
 
   <Footer/>

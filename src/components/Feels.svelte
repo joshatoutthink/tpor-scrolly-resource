@@ -23,8 +23,9 @@
   function createInterSectionCallback(key){
     return function whenInViewShow(entries){
       entries.forEach((entry)=>{
-        const {boundingClientRect:{y,height}, intersectionRatio,} = entry
-        if(y >= 0 && intersectionRatio >.4 ){
+        const {boundingClientRect:{y,height}, intersectionRatio, isIntersecting} = entry
+        console.log(entry)
+        if(y >= 0 && intersectionRatio >.4 || !isIntersecting ){
           showing[key] = true
         }
 
@@ -51,9 +52,12 @@
 
       if(y <= 300 ){
           layout="column"
+          console.log("yyyyy",y)
+        if( y>=-200 ){
           setTimeout(()=>{
-          document.querySelector("#option-1").scrollIntoView(true);
-          },100)
+            document.querySelector("#option-1").scrollIntoView(true);
+          },0)
+        }
       }else{
         layout="row"
       }
@@ -169,6 +173,11 @@ data-feeling={feeling.id}>Option<br>{index+1}</a>
   font-weight: bold;
   color:var(--primary);
   border-radius:10px;
+  text-decoration:none;
+}
+.feelings-group .feeling:hover{
+  background:var(--teal50);
+  border:1px solid var(--teal50);
 }
 
 .feeling.is-active{
