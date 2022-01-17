@@ -1,5 +1,6 @@
 <script>
-  import Introduction from "./components/Feels.svelte"
+  import Feels from "./components/Feels.svelte"
+  import BookPromotion from "./components/BookPromo.svelte"
   import Header from "./components/Header.svelte"
   import Footer from "./components/Footer.svelte"
   import {scrollProgress} from "./lib/scrollProgress"
@@ -27,8 +28,10 @@
   />
 
   <main>
-    <Introduction />
+    <Feels />
+    <BookPromotion/>
   </main>
+
   <Footer/>
 </div>
 

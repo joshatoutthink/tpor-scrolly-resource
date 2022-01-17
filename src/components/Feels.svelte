@@ -27,13 +27,11 @@
         if(y >= 0 && intersectionRatio >.4 ){
 /* console.log(key + " entering",y) */
           showing[key] = true
-console.log(entry)
         }
 
         if(y <= 100 || y>=height ){
 /* console.log(key + " leaving",y) */
           showing[key] = false
-console.log(entry)
         }
 
       }) 
@@ -44,16 +42,16 @@ console.log(entry)
   function headerObserverCallback(entries){
     entries.forEach((entry)=>{
       const {boundingClientRect:{y}, intersectionRatio} = entry
-      if(y<=170){
+      if(y<=200){
 /* console.log({headerEntry:entry}) */
         showAppHeader = true
       }
       else{
         showAppHeader = false
       }
+      console.log("y",y)
 
-      console.log({y})
-      if(y<=140){
+      if(200){
         setTimeout(()=>{
         layout="column"
         },200)
@@ -75,10 +73,9 @@ console.log(entry)
 
     parentObserver.observe(parentEl)
 
-    Object.keys(els).forEach((feelingKey)=>{
-       feelingsObserver.observe(els[feelingKey])
-    })
-
+    feelingsObserver.observe(els.feeling)
+    ignoringObserver.observe(els.ignoring)
+    thinkingObserver.observe(els.thinking)
   })  
 
 </script>
@@ -95,7 +92,7 @@ console.log(entry)
       </h2>
     </header>
 
-    {#if false}
+    {#if layout=="row"}
       <div class="text" bind:this={introEl}>
         This is some text to explain whats going to happen and what is going to be shown.
       </div>
@@ -109,7 +106,7 @@ console.log(entry)
     </div>
     {/key}
     {#each feelings as feeling (feeling.id)}
-      <div class="wrapper" bind:this={els[feeling.id]} ><FeelingExplainer  isActive={showing[feeling.id]==true} feeling={feeling}/></div>
+      <div class={`wrapper feeling-${feeling.id}`}  bind:this={els[feeling.id]} ><FeelingExplainer  isActive={showing[feeling.id]==true} feeling={feeling}/></div>
     {/each}
   </div>
   
@@ -126,6 +123,10 @@ console.log(entry)
   text-align: center;
   font-size: var(--md-sz);
   color:var(--yellow);
+}
+.text{
+  text-align: center; 
+  color:white;
 }
 .wrapper{
   padding:var(--sm-sz);
@@ -159,7 +160,7 @@ console.log(entry)
     display:none;
   }
 }
-.feeling{
+.feelings-group .feeling{
   background:white;
   max-height:200px;
   width:100%; 
@@ -186,7 +187,7 @@ header{
   position:sticky;
   background:var(--primary);
   z-index:var(--layer2);
-  top:calc(var(--lg-sz) * 1.2);
+  top:0;
   text-align: center;
 }
 

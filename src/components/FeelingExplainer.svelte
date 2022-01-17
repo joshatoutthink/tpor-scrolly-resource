@@ -8,17 +8,17 @@
 
 {#if isActive}
 <div class={`block showing-details`}  >
-  <div in:fly="{{y:100}}" class="BG"></div>
+  <div in:fly="{{y:100}}" out:fly="{{y:100,delay:200}}" class="BG"></div>
 
   <div class="content">
-    <h3 in:fly="{{y:-50,duration: 600,delay:200 }}" >
+    <h3 transition:fly="{{y:-50,duration: 600,delay:200 }}" >
       Feelings are for<br> <span class="big">{id}</span>
     </h3>
-    <p class="info" in:fly="{{y:50,duration: 600,delay:200 }}">
+    <p class="info" transition:fly="{{y:50,duration: 600,delay:200 }}">
       {description}
     </p>
   </div>
-  <div class="image" in:fly="{{x:100,duration:1000,delay:300}}">
+  <div class="image" transition:fly="{{x:100,duration:1000,delay:300}}">
     <img  src={image} />
   </div>
 </div>
@@ -58,6 +58,28 @@ h1{
   position: relative;
   z-index:1;
   padding:20px;
+}
+@media(min-width:762px){
+.content{
+  display:flex;
+  justify-content: space-between;
+  gap:40px;
+}
+.content p{
+  width:100%;
+}
+.content h3{
+  min-width:fit-content;
+}
+.content h3:after{
+  content:"";
+  height:90%;
+  width:2px;
+  position:absolute;
+  right:-20px;
+  top:0;
+  background:var(--teal50);
+}
 }
 h3{
   color:var(--primary);
