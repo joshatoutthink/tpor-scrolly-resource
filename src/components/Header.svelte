@@ -12,7 +12,8 @@
     gsap.to("header",{
       scrollTrigger:{
         trigger:"header",
-        start:"top+=10px top",
+        start:"top top",
+        end:"+=200px",
         onUpdate:({progress})=>{
           headerScale = mapPercentTo(1 - progress,{start:.5,end:1})
         },
@@ -35,7 +36,7 @@
     {#if showInfo}
     <hr out:fly="{{x:-100}}">
     <p class="info" out:fly="{{x:-100}}">
-      An short guide to dealing with regrets.
+      A short guide to dealing with regrets.
     </p>
     {/if}
   </div>
@@ -45,7 +46,6 @@
 header{
   z-index:var(--layer-top);
   margin-block-start:var(--header-height);
-  padding-block: var(--md-sz);
   padding-block-end:calc(var(--xl-sz) - 1em);
   text-align: center;
   position:sticky;

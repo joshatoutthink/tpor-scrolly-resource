@@ -3,62 +3,50 @@
   import FeelingExplainer from "./FeelingExplainer.svelte"
   import {ScrollTrigger} from "gsap/ScrollTrigger"
 
+  let showing = {
+    feeling:false,
+    ignoring:false,
+    thinking:false,
+  }
+
+  let layout = "row"
+
   let feelingEl,ignoringEl,thinkingEl,introEl,parentEl
 
-  let showing = null
-  function activate(feeling){
-    if(!showing){
-      showing = feeling
+  function createInterSectionCallBack(key){
+    return function whenInViewShow(entries){
+      entries.forEach((entry)=>{
+        const {boundingClientRect:{y}, intersectionRatio} = entry
+        if(y >= 0 && intersectionRatio >.4 ){
+          console.log(key + " entering",y)
+          showing[key] = true
+          console.log(entry)
+        }
+
+        if(y <= 0 ){
+          console.log(key + " leaving",y)
+          showing[key] = false
+          console.log(entry)
+        }
+
+      }) 
+      
     }
-  }
-  function deactivate(feeling){
-    if(showing == feeling){
-      showing = null
-    }
-  }
-  function feelingController(el,name){
-    ScrollTrigger.create({
-      trigger:el,
-      marker:true,
-      start:"top top",
-      end:"bottom bottom",
-      onEnter:()=>{
-        activate(name)
-      },
-      onEnterBack:()=>{
-        activate(name)
-      },
-      onLeave:()=>{
-        console.log(name)
-        deactivate(name)
-      },
-      onLeaveBack:()=>{
-        deactivate(name)
-      },
-    })
   }
 
-  $:showing,console.log(showing)
+  const threshold = [0,.2,.4,.5,.6,.8,1]
+  const feelingsObserver = new IntersectionObserver(createInterSectionCallBack("feeling"),{threshold}) 
+  const ignoringObserver = new IntersectionObserver(createInterSectionCallBack("ignoring"),{threshold}) 
+  const thinkingObserver = new IntersectionObserver(createInterSectionCallBack("thinking"),{threshold}) 
 
   onMount(()=>{
 
-
-    ScrollTrigger.create({
-      trigger:parentEl,
-      start:"top top",
-      end:"+=200",
-      onEnter:()=>activate("intro")||console.log("introA"),
-      onLeave:()=>deactivate("intro")||console.log("introL")
-    })
-    //FEELINGS
-
-    //Feeling Feeling
-    feelingController(feelingEl, "feeling")
-    feelingController(feelingEl, "feeling")
-    feelingController(ignoringEl, "ignoring")
-    feelingController(thinkingEl, "ignoring")
+    feelingsObserver.observe(feelingEl)
+    ignoringObserver.observe(ignoringEl)
+    thinkingObserver.observe(thinkingEl)
 
   })  
+
 </script>
 
 <div bind:this={parentEl}>
@@ -72,17 +60,15 @@
     </div>
     {/if}
   
-    <div class="feelings-group" style={`--layout:${ showing=="intro" ? "row" : "column" }`}>
+    <div class="feelings-group" style={`--layout:${layout}`}>
       <div class="feeling" data-feeling="feeling">Feelings are for Feeling</div>
       <div class="feeling" data-feeling="ignoring">Feelings are for Ignoring</div>
       <div class="feeling" data-feeling="thinking">Feelings are for Thinking</div>
     </div>
 
-      <div class="wrapper" bind:this={feelingEl} ><FeelingExplainer  isActive={showing==="feeling"} feeling="feeling"/></div>
-      <div class="wapper" bind:this={ignoringEl}><FeelingExplainer feeling="ignoring" isActive={showing==="ignoring"} /></div>
-      <div class="wrapper" bind:this={thinkingEl}>
-            <FeelingExplainer  feeling="thinking" isActive={showing==="thinking"} />
-      </div>
+    <div class="wrapper" bind:this={feelingEl} ><FeelingExplainer  isActive={showing.feeling==true} feeling="feeling"/></div>
+    <div class="wrapper" bind:this={ignoringEl}><FeelingExplainer feeling="ignoring" isActive={showing.ignoring==true} /></div>
+    <div class="wrapper" bind:this={thinkingEl}> <FeelingExplainer  feeling="thinking" isActive={showing.thinking==true} /> </div>
   </div>
   
 </div>
