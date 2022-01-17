@@ -44,7 +44,7 @@
 
 <style>
 header{
-  z-index:var(--layer-top);
+  z-index:var(--layer0);
   margin-block-start:var(--header-height);
   padding-block-end:calc(var(--xl-sz) - 1em);
   text-align: center;
