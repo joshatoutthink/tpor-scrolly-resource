@@ -32,14 +32,18 @@
 
 <header bind:this={headerEl} style={`--header-scale:${headerScale}`}>
   <div class="page-container "  >
-    <h1>Regrets make us feel</h1>
+    <h1>Three Options for Responding to Regret</h1>
     {#if showInfo}
     <hr out:fly="{{x:-100}}">
-    <p class="info" out:fly="{{x:-100}}">
-      A short guide to dealing with regrets.
-    </p>
+    <div class="info" out:fly="{{x:-100}}">
+      <p class="sub-heading">Imagine you forgot a loved one’s birthday.<br> Think about how this makes you feel.</p>
+    </div>
     {/if}
   </div>
+    {#if showInfo}
+      <p class="copy">When it comes to feelings, all regrets aggravate. Productive regrets aggravate, then activate. The
+chart below explains the process. It also demonstrates the key point: Your response determines your result.</p>
+    {/if}
 </header>
 
 <style>
@@ -65,7 +69,7 @@ header{
 }
 
 h1 {
-  font-size:var(--xl-sz);
+  font-size:var(--lg-sz);
   font-weight:200;
   color:var(--primary);
   line-height: 1.2;
@@ -79,8 +83,15 @@ hr{
   width:200px;
 }
 
-p {
+.info .sub-heading {
+  max-width:50ch;
+  margin-inline:auto;
   font-size: var(--md-sz);  
   font-weight:  600;
+}
+ .copy{
+  margin-inline:auto;
+  max-width: 70ch;
+font-size: var(--sm-sz);
 }
 </style>

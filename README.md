@@ -1,3 +1,30 @@
+
+
+[heading]Three Options for Responding to Regret
+[subhead]Imagine you forgot a loved one’s birthday. Think about how this makes you feel.
+[copy] When it comes to feelings, all regrets aggravate. Productive regrets aggravate, then activate. The chart below explains the process. It also demonstrates the key point: Your response determines your result.
+Three possible responses:
+Cards: [Option 1] [Option 2] [Option 3]
+Feelings are for ignoring | You can conclude that feeling is for ignoring – and bury or minimize it. That leads to delusion.
+https://giphy.com/gifs/this-is-fine-QMHoU66sBXqqLqYvGO 
+Feelings are for feeling | You can conclude that feeling is for feeling – and wallow in it. That leads to despair. 
+https://giphy.com/gifs/reaction-hopeless-5f98bs5zssg48
+Feelings are for thinking | Or you can conclude that feeling is for thinking – and address it. What does this regret tell you?
+https://giphy.com/search/lets-do-it
+New Row:
+What instructions does it offer for making better decisions? For improving your performance? For deepening your sense of meaning?
+A regret about being a clueless, uncaring person won’t help. A regret about not keeping important dates in one’s computer calendar or not regularly expressing gratitude to relatives is useful.
+When feeling is for thinking, and thinking is for doing, regret is for making us better.
+Book Row
+
+
+
+
+
+
+
+
+
 # Svelte + Vite
 
 This template should help get you started developing with Svelte in Vite.

@@ -14,10 +14,10 @@
 
   let layout = "row"
   let showAppHeader = false
+  let headerHeight;
 
   let feelingEl,ignoringEl,thinkingEl,introEl,parentEl
-  let els ={}
-   els = {feeling:feelingEl,ignoring:ignoringEl,thinking:thinkingEl}
+  let els = {feeling:feelingEl,ignoring:ignoringEl,thinking:thinkingEl}
 
   
   function createInterSectionCallback(key){
@@ -25,12 +25,10 @@
       entries.forEach((entry)=>{
         const {boundingClientRect:{y,height}, intersectionRatio,} = entry
         if(y >= 0 && intersectionRatio >.4 ){
-/* console.log(key + " entering",y) */
           showing[key] = true
         }
 
-        if(y <= 100 || y>=height ){
-/* console.log(key + " leaving",y) */
+        if(y <= 0 || y>=height ){
           showing[key] = false
         }
 
@@ -49,16 +47,15 @@
       else{
         showAppHeader = false
       }
-      console.log("y",y)
+      console.log("y",y,{entry})
 
-      if(200){
-        setTimeout(()=>{
-        layout="column"
-        },200)
-
+      if(y <= 300 ){
+          layout="column"
+          setTimeout(()=>{
+          document.querySelector("#option-1").scrollIntoView(true);
+          },100)
       }else{
         layout="row"
-
       }
     })
   }
@@ -80,33 +77,29 @@
 
 </script>
 
-<div class="parent" bind:this={parentEl}>
+<div class="parent" bind:this={parentEl} style="--header-height:{headerHeight}px">
   <div class="page-container">
 
-    <header >
-      {#if showAppHeader }
-        <div transition:fly="{{y:-50}}" class="app-heading">Regrets make us feel.</div>
-      {/if}
-      <h2>
-        Possible ways to deal with Regret
-      </h2>
+    <header bind:clientHeight={headerHeight} transition:fly="{{y:-50}}">
+      <div  class="app-heading">
+        Ways to deal with Regret
+      </div>
+      <h2>Three possible responses</h2>
     </header>
 
-    {#if layout=="row"}
-      <div class="text" bind:this={introEl}>
-        This is some text to explain whats going to happen and what is going to be shown.
-      </div>
-    {/if}
   
     {#key layout}
     <div class={`feelings-group ${layout=="column"&&"column-layout"}`} transition:fade>
-      {#each feelings as feeling (feeling.id)}
-        <div animate:flip="{{duration:200}}" class={`feeling ${showing[feeling.id]==true && "is-active"}`} data-feeling={feeling.id}>Feelings are for {feeling.id}</div>
+      {#each feelings as feeling,index (feeling.id)}
+        <a href={`#option-${index+1}`} animate:flip="{{duration:200}}" class={`feeling ${showing[feeling.id]==true && "is-active"}`}
+data-feeling={feeling.id}>Option<br>{index+1}</a>
       {/each}
     </div>
     {/key}
-    {#each feelings as feeling (feeling.id)}
-      <div class={`wrapper feeling-${feeling.id}`}  bind:this={els[feeling.id]} ><FeelingExplainer  isActive={showing[feeling.id]==true} feeling={feeling}/></div>
+    {#each feelings as feeling, index (feeling.id)}
+    <div id={`option-${index+1}`} class={`wrapper feeling-${feeling.id}`}  bind:this={els[feeling.id]} >
+      <FeelingExplainer {index}  isActive={showing[feeling.id]==true} feeling={feeling}/>
+    </div>
     {/each}
   </div>
   
@@ -129,7 +122,8 @@
   color:white;
 }
 .wrapper{
-  padding:var(--sm-sz);
+  padding:var(--m-sz);
+  padding-block-start:var(--header-height);
   padding-left:var(--sidebar-width,200px);
   height:100vh;
 }
@@ -143,6 +137,7 @@
   margin-top:150px;
   top:150px;
   display:flex;
+  z-index:var(--layer1);
   gap:10px;
   justify-content:center;
   flex-direction:row;
@@ -156,7 +151,7 @@
   justify-content: flex-start; 
 }
 @media(max-width:762px){
-  .feelings-group.column-layout{
+  .feelings-group{
     display:none;
   }
 }
@@ -189,6 +184,11 @@ header{
   z-index:var(--layer2);
   top:0;
   text-align: center;
+}
+@media(max-width:762px){
+  header{
+    margin-bottom:200px;
+  }
 }
 
 h2{

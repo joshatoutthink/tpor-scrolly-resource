@@ -9,7 +9,7 @@
 
 footer{
   position:sticky;
-  z-index:var(--layer-bottom);
+  z-index:var(--layer0);
   bottom:0;
   text-align:center;
   padding:var(--sm-sz);

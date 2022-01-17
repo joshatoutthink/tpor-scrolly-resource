@@ -1,17 +1,17 @@
 export const feelings = [
   {
-    id:"feeling",
-    description:"You'll get to depressed",
+    id:"ignoring",
+    description:"You can conclude that feeling is for ignoring – and bury or minimize it. That leads to delusion.",
     image:"./denial.png",
   },
   {
-    id:"ignoring",
-    description:"if we ignore how we feel we can end up in a state of denial",
+    id:"feeling",
+    description:"You can conclude that feeling is for feeling – and wallow in it. That leads to despair.",
     image:"./denial.png",
   },
   {
     id:"thinking",
-    description:"this is what you want to do!",
+    description:"Or you can conclude that feeling is for thinking – and address it. What does this regret tell you?",
     image:"./denial.png",
   }
 ]

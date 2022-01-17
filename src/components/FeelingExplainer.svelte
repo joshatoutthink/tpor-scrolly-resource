@@ -2,6 +2,7 @@
   import {fly} from "svelte/transition"
  export let feeling 
   export let isActive
+  export let index;
   const {image, id, description} = feeling
 </script>
 
@@ -11,9 +12,12 @@
   <div in:fly="{{y:100}}" out:fly="{{y:100,delay:200}}" class="BG"></div>
 
   <div class="content">
-    <h3 transition:fly="{{y:-50,duration: 600,delay:200 }}" >
-      Feelings are for<br> <span class="big">{id}</span>
-    </h3>
+    <header transition:fly="{{y:-50,duration: 600,delay:200 }}">    
+      <span class="tag">Option {index+1}</span>
+      <h3>
+        Feelings are for<br> <span class="big">{id}</span>
+      </h3>
+    </header>
     <p class="info" transition:fly="{{y:50,duration: 600,delay:200 }}">
       {description}
     </p>
@@ -71,7 +75,7 @@ h1{
 .content h3{
   min-width:fit-content;
 }
-.content h3:after{
+.content header:after{
   content:"";
   height:90%;
   width:2px;
@@ -82,8 +86,19 @@ h1{
 }
 }
 h3{
-  color:var(--primary);
   font-size: 30px;
+}
+h3 .big{  color:var(--primary);
+}
+.tag{
+  display:inline-flex;
+  background:var(--teal50);
+  border-radius:4px;  
+  padding-inline:var(--base-sz);
+  font-size: var(--base-sz);
+  color:var(--primary);
+  font-weight: bold;
+  text-transform:uppercase;
 }
 p{
   font-size: var(--sm-sz);

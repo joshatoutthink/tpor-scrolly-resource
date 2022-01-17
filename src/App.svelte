@@ -24,7 +24,7 @@
 <div class="App" bind:this={AppEl} style={`--scrolled:${scrolled}`}>
   <div class="scroll-progress-indicator"></div>
   <Header 
-    --header-height="33vh"
+    --header-height="20vh"
   />
 
   <main>
