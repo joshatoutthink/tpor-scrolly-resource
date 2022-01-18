@@ -12,6 +12,6 @@ export const feelings = [
   {
     id:"thinking",
     description:"Or you can conclude that feeling is for thinking – and address it. What does this regret tell you?",
-    image:"./denial.png",
+    image:"https://media1.giphy.com/media/1BdrVZ5rBF17mTw81B/200.gif",
   }
 ]
