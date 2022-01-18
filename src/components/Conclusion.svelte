@@ -4,15 +4,19 @@
 
 <div class="parent">
   <div class="page-container">
-    <header>
-      <div class="pre-heading">Conclusion:</div>
-      <h2>Thinking leads to Doing!</h2>
-    </header>
-    <div class="content">
-      <p>What instructions does it offer for making better decisions? For improving your performance? For deepening your sense of meaning?</p>
-      <p>A regret about being a clueless, uncaring person won’t help. A regret about not keeping important dates in one’s computer calendar or not regularly expressing gratitude to relatives is useful.</p>
+    <div>
+      <header>
+        <div class="pre-heading">Conclusion:</div>
+        <h2>Thinking leads to Doing!</h2>
+      </header>
+      <div class="content">
+        <p>What instructions does it offer for making better decisions? For improving your performance? For deepening your sense of meaning?</p>
+        <p>A regret about being a clueless, uncaring person won’t help. A regret about not keeping important dates in one’s computer calendar or not regularly expressing gratitude to relatives is useful.</p>
+      </div>
     </div>
-    <div class="image"></div>
+    <div class="image">
+      <img src="https://i.giphy.com/media/BpGWitbFZflfSUYuZ9/giphy.webp" alt="Dwight from the office cracking his knuckles getting ready to get to work">
+    </div>
   </div>
 </div>
 
@@ -28,6 +32,11 @@
   background:var(--gray50);
   padding:var(--sm-sz);
   border-radius:20px;
+  display:flex;
+  gap:40px;
+}
+.page-container > div:not(.image){
+  order:1;
 }
 header{
   margin-block-end:var(--sm-sz);
@@ -53,5 +62,31 @@ h2{
 p{
   font-size: var(--sm-sz);
   margin-block-end:var(--xxs-sz);
+}
+.image{
+  box-shadow:var(--shadow-xl);
+  position: relative;
+  z-index:1;
+  overflow:hidden;
+  border-radius:20px; 
+  height:70%;
+  max-width:80%;
+  min-width:40%;
+  margin-inline:auto;
+  order:0; 
+}
+@media(max-width:600px){
+  .page-container{
+    flex-direction:column; 
+  }
+.image{
+  max-width:100%;
+  order:2;
+}
+}
+img{
+  object-fit:cover;
+  width:100%;
+  height:100%;
 }
 </style>
