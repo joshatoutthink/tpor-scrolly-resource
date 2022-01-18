@@ -48,13 +48,13 @@ chart below explains the process. It also demonstrates the key point: Your respo
 
 <style>
 header{
-  z-index:var(--layer0);
+  z-index:var(--layer1);
   margin-block-start:var(--header-height);
   padding-block-end:calc(var(--xl-sz) - 1em);
   text-align: center;
   position:sticky;
   top:0;
-  height:calc(100vh - 200px);
+  height:calc(100vh - 100px);
   pointer-events:none;
   background:var(--teal50);
 }  

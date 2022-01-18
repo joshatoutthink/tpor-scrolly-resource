@@ -4,6 +4,7 @@
   import Header from "./components/Header.svelte"
   import Conclusion from "./components/Conclusion.svelte"
   import Footer from "./components/Footer.svelte"
+  import ScrollIcon from "./components/ScrollIcon.svelte"
   import {scrollProgress} from "./lib/scrollProgress"
 
   import {onMount} from "svelte"
@@ -17,12 +18,13 @@
       }
     })
   }) 
+let scrollIconVisibility= "initial";
 
-
+$: scrollIconVisibility = scrolled >= .85 && "none"
 </script>
 
 
-<div class="App" bind:this={AppEl} style={`--scrolled:${scrolled}`}>
+<div class="App" bind:this={AppEl} style={`--scrolled:${scrolled}; --scroll-icon-visible:{scrollIconVisibility}`}>
   <div class="scroll-progress-indicator"></div>
   <Header 
     --header-height="20vh"
@@ -36,6 +38,7 @@
   </main>
 
   <Footer/>
+  <ScrollIcon --scroll-icon-visible={scrollIconVisibility}/>
 </div>
 
 <style>
