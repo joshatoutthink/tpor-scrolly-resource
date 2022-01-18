@@ -64,16 +64,17 @@ p{
   margin-block-end:var(--xxs-sz);
 }
 .image{
-  box-shadow:var(--shadow-xl);
+  box-shadow: var(--shadow-xl);
   position: relative;
-  z-index:1;
-  overflow:hidden;
-  border-radius:20px; 
-  height:70%;
-  max-width:80%;
-  min-width:40%;
-  margin-inline:auto;
-  order:0; 
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 20px;
+  max-width: 80%;
+  width: 100%;
+  min-width: 40%;
+  height: 300px;
+  margin-inline: auto;
+  order: 0;
 }
 @media(max-width:600px){
   .page-container{
@@ -88,5 +89,7 @@ img{
   object-fit:cover;
   width:100%;
   height:100%;
+  min-height:100%;
+  min-width:100%;
 }
 </style>
