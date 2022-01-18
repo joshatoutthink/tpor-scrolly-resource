@@ -71,6 +71,7 @@ p{
   border-radius: 20px;
   max-width: 80%;
   width: 100%;
+
   min-width: 40%;
   height: 300px;
   margin-inline: auto;

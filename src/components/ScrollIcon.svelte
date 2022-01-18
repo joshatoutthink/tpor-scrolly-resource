@@ -16,11 +16,12 @@ class="arrow"></path></svg></span>
 <style> 
 svg{
   width:100%;
-  fill:var(--yellow);
+  fill:var(--black);
   filter:drop-shadow(0 0 8px var(--gray400));
   pointer-events:none;
 }
 div{
+  mix-blend-mode:overlay;
   position:fixed;
   bottom:0;
   width:100vw;
