@@ -1,5 +1,6 @@
 <script>
   import {fly,fade} from "svelte/transition"
+  import ShareButtons from "./ShareButtons.svelte"
 </script>
 <div class="promo">
   <div class="page-container">
@@ -9,9 +10,10 @@
         <p class="subtitle">
           How Looking Backward Moves Us Forward
         </p>
-        <p class="desc">
+        <p class="desc" style="margin-block-end:var(--md-sz);">
           In Daniel Pink's new book, find out how regret, our most misunderstood emotion, can be the pathway to our best life.
         </p>
+        <ShareButtons/>
     </div>
     <div class="book">
       <img src="https://www.danpink.com/wp-content/uploads/2021/11/POWER-OF-REGRET-DAN-PINK-BOOK-JACKET.png" alt="">
@@ -72,6 +74,11 @@ line-height: 1.2;
 .content{
   max-width:80ch;
   width:100%;
+}
+@media(max-width:762px){
+  .content{
+    text-align: center;
+  }
 }
 .overlay{
   background:var(--teal50);
