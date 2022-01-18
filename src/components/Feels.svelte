@@ -23,9 +23,8 @@
   function createInterSectionCallback(key){
     return function whenInViewShow(entries){
       entries.forEach((entry)=>{
-        const {boundingClientRect:{y,height}, intersectionRatio, isIntersecting} = entry
-        console.log(entry)
-        if(y >= 0 && intersectionRatio >.4 || !isIntersecting ){
+        const {boundingClientRect:{y,height}, intersectionRatio} = entry
+        if(y >= 0 && intersectionRatio >.4 ){
           showing[key] = true
         }
 
@@ -83,7 +82,6 @@
 
 <div class="parent" bind:this={parentEl} style="--header-height:{headerHeight}px">
   <div class="page-container">
-
     <header bind:clientHeight={headerHeight} transition:fly="{{y:-50}}">
       <div  class="app-heading">
         Ways to deal with Regret
