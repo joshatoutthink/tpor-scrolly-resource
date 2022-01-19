@@ -32,18 +32,15 @@
 
 <header bind:this={headerEl} style={`--header-scale:${headerScale}`}>
   <div class="page-container "  >
-    <h1>Three Options for Responding to Regret</h1>
+    <h1>Regret makes us feel</h1>
     {#if showInfo}
     <hr out:fly="{{x:-100}}">
     <div class="info" out:fly="{{x:-100}}">
-      <p class="sub-heading">Imagine you forgot a loved one’s birthday.<br> Think about how this makes you feel.</p>
+      <p class="copy">When it comes to feelings, all regrets aggravate. Productive regrets aggravate, then activate. The
+chart below explains the process. It also demonstrates the key point: Your response determines your result.</p>
     </div>
     {/if}
   </div>
-    {#if showInfo}
-      <p class="copy">When it comes to feelings, all regrets aggravate. Productive regrets aggravate, then activate. The
-chart below explains the process. It also demonstrates the key point: Your response determines your result.</p>
-    {/if}
 </header>
 
 <style>

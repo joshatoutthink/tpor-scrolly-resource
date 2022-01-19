@@ -74,6 +74,10 @@ h1{
 }
 .content h3{
   min-width:fit-content;
+  white-space:nowrap;
+}
+header{
+margin-block-end:var(--xs-sz);
 }
 .content header:after{
   content:"";
@@ -86,7 +90,7 @@ h1{
 }
 }
 h3{
-  font-size: 30px;
+  font-size: var(--sm-sz);
 }
 h3 .big{  color:var(--primary);
 }
@@ -95,7 +99,7 @@ h3 .big{  color:var(--primary);
   background:var(--teal50);
   border-radius:4px;  
   padding-inline:var(--base-sz);
-  font-size: var(--base-sz);
+  font-size: 1.3rem;
   color:var(--primary);
   font-weight: bold;
   text-transform:uppercase;

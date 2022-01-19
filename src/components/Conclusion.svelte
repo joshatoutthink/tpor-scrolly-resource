@@ -6,7 +6,7 @@
   <div class="page-container">
     <div>
       <header>
-        <div class="pre-heading">Conclusion:</div>
+
         <h2>Thinking leads to Doing!</h2>
       </header>
       <div class="content">
@@ -40,19 +40,6 @@
 }
 header{
   margin-block-end:var(--sm-sz);
-}
-.pre-heading{
-  font-size: calc(var(--base-sz) * 1.3);
-  line-height:1;
-  display:inline-block;
-  background:var(--teal50);
-  border-radius:4px;  
-  padding-inline:calc(var(--base-sz) / 2);
-padding-block:calc(var(--base-sz) / 3);
-  color:var(--primary);
-  font-weight: bold;
-  text-transform:uppercase;
-  margin-block-end:var(--base-sz);
 }
 
 h2{

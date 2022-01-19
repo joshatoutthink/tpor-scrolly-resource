@@ -12,8 +12,7 @@
       return acc
     },{})
 
-  let layout = "row"
-  let showAppHeader = false
+  let showAppHeader= false
   let headerHeight;
 
   let feelingEl,ignoringEl,thinkingEl,introEl,parentEl
@@ -47,19 +46,7 @@
       else{
         showAppHeader = false
       }
-      console.log("y",y,{entry})
-
-      if(y <= 300 ){
-          layout="column"
-          console.log("yyyyy",y)
-        if( y>=-200 ){
-          setTimeout(()=>{
-            document.querySelector("#option-1").scrollIntoView(true);
-          },0)
-        }
-      }else{
-        layout="row"
-      }
+      
     })
   }
 
@@ -90,19 +77,17 @@
     </header>
 
   
-    {#key layout}
-    <div class={`feelings-group ${layout=="column"&&"column-layout"}`} transition:fade>
-      {#each feelings as feeling,index (feeling.id)}
-        <a href={`#option-${index+1}`} animate:flip="{{duration:200}}" class={`feeling ${showing[feeling.id]==true && "is-active"}`}
-data-feeling={feeling.id}>Option<br>{index+1}</a>
-      {/each}
-    </div>
-    {/key}
+    <div class="feelings">
     {#each feelings as feeling, index (feeling.id)}
-    <div id={`option-${index+1}`} class={`wrapper feeling-${feeling.id}`}  bind:this={els[feeling.id]} >
-      <FeelingExplainer {index}  isActive={showing[feeling.id]==true} feeling={feeling}/>
-    </div>
+      <div id={`option-${index+1}`} class={`wrapper feeling-${feeling.id}`}  bind:this={els[feeling.id]} >
+        <FeelingExplainer 
+           {index}  
+           isActive={showing[feeling.id]==true}
+           feeling={feeling}
+        />
+      </div>
     {/each}
+    </div>
   </div>
   
 </div>
@@ -126,63 +111,11 @@ data-feeling={feeling.id}>Option<br>{index+1}</a>
 .wrapper{
   padding:var(--m-sz);
   padding-block-start:var(--header-height);
-  padding-left:var(--sidebar-width,200px);
   height:100vh;
 }
-@media (max-width:762px){
-  .wrapper {
-    padding-left:var(--sm-sz);
-  }
-}
-.feelings-group{
-  position:sticky;
-  margin-top:150px;
-  top:150px;
-  display:flex;
-  z-index:var(--layer1);
-  gap:10px;
-  justify-content:center;
-  flex-direction:row;
-  height:calc(100vh - 150px);
-  padding:var(--md-sz);
-}
-.feelings-group.column-layout{
-  flex-direction:column;
-  margin-top:0;
-  width:200px;
-  justify-content: flex-start; 
-}
-@media(max-width:762px){
-  .feelings-group{
-    display:none;
-  }
-}
-.feelings-group .feeling{
-  background:white;
-  max-height:200px;
-  width:100%; 
-  transition:transform .28s ease-in-out;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2em;
-  padding:var(--sm-sz);
-  text-align: center;
-  font-weight: bold;
-  color:var(--primary);
-  border-radius:10px;
-  text-decoration:none;
-}
-.feelings-group .feeling:hover{
-  background:var(--teal50);
-  border:1px solid var(--teal50);
-}
-
-.feeling.is-active{
-  transform:translateX(10px) scale(1.05);
-}
-.column-layout .feeling{
-  height:100%;
+.feelings{
+  max-width:700px;
+  margin-inline:auto;
 }
 
 header{
